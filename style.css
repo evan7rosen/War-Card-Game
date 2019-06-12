@@ -1,0 +1,12 @@
+body {
+    background-image: url("tablegreen.jpg");
+    background-color: #cccccc;
+   }
+
+#padding{
+    padding: 10px;
+}
+
+#score-board{
+    background-color: antiquewhite;
+}
