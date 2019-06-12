@@ -5,8 +5,6 @@ axios.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1').then(
     let dealBtn = document.getElementById("deal-btn")
     let dealerCard = document.getElementById("dealer-card")
     let playerCard = document.getElementById("player-card")
-    console.log(dealerCard)
-    console.log(playerCard)
     let newDealerCard = document.createElement("img")
     let newPlayerCard = document.createElement("img")
     let scoreBoard = document.getElementById("score-board")
@@ -19,37 +17,25 @@ axios.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1').then(
         axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`).then(response2 => {
             let card1val = response2.data.cards[0].value
             let card2val = response2.data.cards[1].value
-            let card1img = response2.data.cards[0].image
-            let card2img = response2.data.cards[1].image
             let remaining = response2.data.remaining
-            newDealerCard.src = card1img
-            newPlayerCard.src = card2img
+            newDealerCard.src = response2.data.cards[0].image
+            newPlayerCard.src = response2.data.cards[1].image
 
-            if (card1val === "JACK") {
-                card1val = '11'
-            } else if (card1val === "QUEEN") {
-                card1val = '12'
-            } else if (card1val === "KING") {
-                card1val = '13'
-            } else if (card1val === "ACE") {
-                card1val = '14'
+            function cardValtoNum(val) {
+                if (val === "JACK") {
+                    val = '11'
+                } else if (val === "QUEEN") {
+                    val = '12'
+                } else if (val === "KING") {
+                    val = '13'
+                } else if (val === "ACE") {
+                    val = '14'
+                }
+                return Number(val)
             }
-            if (card2val === "JACK") {
-                card2val = '11'
-            } else if (card2val === "QUEEN") {
-                card2val = '12'
-            } else if (card2val === "KING") {
-                card2val = '13'
-            } else if (card2val === "ACE") {
-                card2val = '14'
-            }
-            let card1valNum = Number(card1val)
-            let card2valNum = Number(card2val)
 
-            console.log('post-dealer', card1valNum)
-            console.log('post-player', card2valNum)
-            console.log('type-dealer', typeof card1valNum)
-            console.log('type-player', typeof card2valNum)
+            let card1valNum = cardValtoNum(card1val)
+            let card2valNum = cardValtoNum(card2val)
 
             if (card1valNum > card2valNum) {
                 dealerWins++
@@ -63,18 +49,4 @@ axios.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1').then(
             scoreBoard.innerHTML = `<h1>Score Board:</h1> <p> Player: ${playerWins} </p> <p> Dealer: ${dealerWins} </p> <p> Cards Remaining: ${remaining} </p>`
         })
     }
-
-
-
-
-    // let newGameBtn = document.getElementById("new-game-btn")
-    // newGameBtn.addEventListener("click", newGame())
-    // function newGame() {
-    //     axios.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1').then(response => {
-    //         let deckId = response.data.deck_id
-    //         let remaining = response.data.remaining
-    //         console.log('deck ID', deckId)
-    //         console.log('cards remaining', remaining)
-    //     })
-    // }
 })

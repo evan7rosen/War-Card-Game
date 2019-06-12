@@ -11,10 +11,13 @@ body {
     background-color: antiquewhite;
 }
 
-.card-margin{
-    margin-left: 200px;
-}
-
 #new-game-btn{
     margin-left: 10px;
+}
+
+#dealer-chip{
+    border-radius: 50%;
+    width: 25%;
+    margin-top: 50px;
+    margin-left: 250px;
 }
