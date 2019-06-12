@@ -52,15 +52,15 @@ axios.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1').then(
             console.log('type-player', typeof card2valNum)
 
             if (card1valNum > card2valNum) {
-                console.log('you lose')
                 dealerWins++
+                setTimeout(function () { alert('you lose') }, 300)
             } else if (card2valNum > card1valNum) {
-                console.log('you win')
                 playerWins++
+                setTimeout(function () { alert('you win') }, 300)
             } else if (card1valNum === card2valNum) {
-                console.log('tie game')
+                setTimeout(function () { alert('tie game') }, 300)
             }
-            scoreBoard.innerHTML = `<p> Player: ${playerWins}, </p> <p> Dealer: ${dealerWins} </p> <p> Cards Remaining: ${remaining} </p>`
+            scoreBoard.innerHTML = `<h1>Score Board:</h1> <p> Player: ${playerWins} </p> <p> Dealer: ${dealerWins} </p> <p> Cards Remaining: ${remaining} </p>`
         })
     }
 

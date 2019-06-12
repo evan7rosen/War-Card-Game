@@ -3,10 +3,14 @@ body {
     background-color: #cccccc;
    }
 
-#padding{
+.padding{
     padding: 10px;
 }
 
 #score-board{
     background-color: antiquewhite;
+}
+
+.card-margin{
+    margin-left: 200px;
 }
