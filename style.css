@@ -14,3 +14,7 @@ body {
 .card-margin{
     margin-left: 200px;
 }
+
+#new-game-btn{
+    margin-left: 10px;
+}
